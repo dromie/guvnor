@@ -39,33 +39,33 @@
     <s:modifies/>
 
     <!-- No real authentication: demo authentication for demo purposes -->
-    <security:authenticatorClass>org.drools.guvnor.server.security.DemoAuthenticator</security:authenticatorClass>
+    <!-- <security:authenticatorClass>org.drools.guvnor.server.security.DemoAuthenticator</security:authenticatorClass> -->
 
     <!-- JAAS based authentication -->
-    <!--<security:authenticatorName>jaasAuthenticator</security:authenticatorName>-->
+    <security:authenticatorName>jaasAuthenticator</security:authenticatorName>
 
     <!-- IDM based authentication (supports LDAP, see Seam 3 and PicketLink IDM documentation) -->
     <!--<security:authenticatorClass>org.jboss.seam.security.management.IdmAuthenticator</security:authenticator>-->
   </security:IdentityImpl>
 
-  <!--<security:jaas.JaasAuthenticator>-->
-    <!--<s:modifies/>-->
+  <security:jaas.JaasAuthenticator>
+    <s:modifies/>
     <!--
       The following one will use the jaas configuration called "other",
       which in jboss AS means you can use properties files for users.
     -->
-    <!--<jaasConfigName>other</jaasConfigName>-->
-  <!--</security:jaas.JaasAuthenticator>-->
+    <security:jaasConfigName>guvnor</security:jaasConfigName>
+  </security:jaas.JaasAuthenticator>
 
 
   <!-- SECURITY AUTHORIZATION CONFIGURATION -->
   <!--
       This is used to enable or disable role-based authorization. By default it is disabled.
   -->
-  <!--<guvnorSecurity:RoleBasedPermissionResolver>-->
-    <!--<s:modifies/>-->
-    <!--<guvnorSecurity:enableRoleBasedAuthorization>true</guvnorSecurity:enableRoleBasedAuthorization>-->
-  <!--</guvnorSecurity:RoleBasedPermissionResolver>-->
+  <guvnorSecurity:RoleBasedPermissionResolver>
+    <s:modifies/>
+    <guvnorSecurity:enableRoleBasedAuthorization>true</guvnorSecurity:enableRoleBasedAuthorization>
+  </guvnorSecurity:RoleBasedPermissionResolver>
 
   <weld:scan>
     <!-- Disable the seam-security by drools rules -->
